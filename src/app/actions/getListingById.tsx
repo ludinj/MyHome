@@ -11,7 +11,9 @@ export default async function getListingById(params: IParams) {
       where: { id: listingId },
       include: { user: true },
     });
-    if (!listing) return null;
+    if (!listing) {
+      return null;
+    }
 
     return {
       ...listing,
