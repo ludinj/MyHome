@@ -1,5 +1,5 @@
 'use client';
-import { FC, useCallback, useState } from 'react';
+import { FC, RefObject, useCallback, useRef, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from '../Avatar';
 import MenuItem from './MenuItem';
@@ -10,6 +10,7 @@ import { signOut } from 'next-auth/react';
 import { SafeUser } from '@/app/types';
 import useRentModal from '../../hooks/useRentModal';
 import { useRouter } from 'next/navigation';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -17,6 +18,9 @@ interface UserMenuProps {
 
 const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useOnClickOutside(ref, () => setIsOpen(false));
+
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
@@ -60,7 +64,10 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
         </div>
       </div>
       {isOpen && (
-        <div className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
+        <div
+          ref={ref}
+          className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'
+        >
           <div className='flex flex-col cursor-pointer'>
             {currentUser ? (
               <>
