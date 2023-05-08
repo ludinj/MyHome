@@ -11,7 +11,13 @@ interface ListingPageProps {}
 const ListingPage = async () => {
   const listings = await getFavoriteListings();
   const currentUser = await getCurrentUser();
-
+  if (!currentUser) {
+    return (
+      <ClientOnly>
+        <EmptyState title='Unauthorized' subtitle='Please login' />
+      </ClientOnly>
+    );
+  }
   if (listings.length === 0) {
     return (
       <ClientOnly>

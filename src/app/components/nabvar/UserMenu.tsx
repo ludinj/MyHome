@@ -32,6 +32,14 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
     rentModal.onOpen();
   }, [loginModal, currentUser, rentModal]);
 
+  const handleMenuItemClick = (path: string) => {
+    if (!currentUser) {
+      loginModal.onOpen();
+      return;
+    } else {
+      router.push(path);
+    }
+  };
   return (
     <div className='relative '>
       <div className='flex flex-row items-center gap-3'>
@@ -57,19 +65,19 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  onClick={() => router.push('/trips')}
+                  onClick={() => handleMenuItemClick('/trips')}
                   label='My trips'
                 />
                 <MenuItem
-                  onClick={() => router.push('/favorites')}
+                  onClick={() => handleMenuItemClick('/favorites')}
                   label='My favorites'
                 />
                 <MenuItem
-                  onClick={() => router.push('/reservations')}
+                  onClick={() => handleMenuItemClick('/reservations')}
                   label='My reservations'
                 />
                 <MenuItem
-                  onClick={() => router.push('/properties')}
+                  onClick={() => handleMenuItemClick('/properties')}
                   label='My properties'
                 />
                 <MenuItem onClick={rentModal.onOpen} label='Airbnb my home' />
