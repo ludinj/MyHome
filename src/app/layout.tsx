@@ -12,12 +12,12 @@ import SearchModal from './components/modals/SearchModal';
 const font = Nunito({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Airbnb',
-  description: 'Airbnb clone',
+  title: 'My Home',
+  description: 'Home bookings'
 };
 
 export default async function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {

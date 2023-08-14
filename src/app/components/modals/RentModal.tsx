@@ -22,7 +22,7 @@ enum STEPS {
   INFO = 2,
   IMAGES = 3,
   DESCRIPTION = 4,
-  PRICE = 5,
+  PRICE = 5
 }
 
 interface RentModalProps {}
@@ -38,7 +38,7 @@ const RentModal: FC<RentModalProps> = ({}) => {
     watch,
     setValue,
     formState: { errors },
-    reset,
+    reset
   } = useForm<FieldValues>({
     defaultValues: {
       category: '',
@@ -49,8 +49,8 @@ const RentModal: FC<RentModalProps> = ({}) => {
       imageSrc: '',
       price: 1,
       title: '',
-      description: '',
-    },
+      description: ''
+    }
   });
 
   const onBack = () => {
@@ -107,7 +107,7 @@ const RentModal: FC<RentModalProps> = ({}) => {
     setValue(id, value, {
       shouldDirty: true,
       shouldTouch: true,
-      shouldValidate: true,
+      shouldValidate: true
     });
   };
 
@@ -245,13 +245,14 @@ const RentModal: FC<RentModalProps> = ({}) => {
   return (
     <Modal
       body={bodyContent}
-      title={'Airbnb your home'}
+      title={'My home'}
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
+      disable={isLoading}
     />
   );
 };

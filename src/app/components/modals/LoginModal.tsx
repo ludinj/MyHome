@@ -24,12 +24,12 @@ const LoginModal: FC<RegisterModalProps> = ({}) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FieldValues>({
     defaultValues: {
       email: '',
-      password: '',
-    },
+      password: ''
+    }
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -95,7 +95,7 @@ const LoginModal: FC<RegisterModalProps> = ({}) => {
       />
       <div className=' text-neutral-500 text-center mt-4 font-light'>
         <div className='justify-center first:flex flex-row items-center gap-2'>
-          <div>First time using airbnb?</div>
+          <div>First time using My Home?</div>
           <div
             onClick={toggle}
             className='text-neutral-800 cursor-pointer hover:underline'

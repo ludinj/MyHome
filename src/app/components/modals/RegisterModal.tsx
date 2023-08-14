@@ -22,13 +22,13 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FieldValues>({
     defaultValues: {
       name: '',
       email: '',
-      password: '',
-    },
+      password: ''
+    }
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -55,7 +55,7 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
   }, [registerModal, loginModal]);
   const bodyContent = (
     <div className='flex flex-col gap-4'>
-      <Heading title='Welcome to Airbnb' subtitle='Create an account' />
+      <Heading title='Welcome to My Home' subtitle='Create an account' />
       <Input
         id='email'
         label='Email'
